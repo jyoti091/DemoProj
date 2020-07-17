@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Basic Demo</title>
+	<link href="Content/bootstrap.css" rel="stylesheet" />
+	<link href="Content/bootstrap-theme.css" rel="stylesheet" />
+	<style>
+		.red {
+			color: red;
+		}
+
+		.black {
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" data-ng-app="DemoApp" data-ng-controller="DemoController">
+		<h4>Single Controls /  without repeat</h4>
+		<div class="row">
+			<div class="col-md-4">
+				<label class="control-label">Text Box</label>
+				<input type="text" class="form-control" placeholder="text box" />
+			</div>
+			<div class="col-md-2">
+				<label class="control-label">Radio</label><br />
+				<label class="radio-inline">
+					<input type="radio" name="rdGender" /> Male
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="rdGender" /> Female
+				</label>
+			</div>
+			<div class="col-md-3">
+				<label class="control-label">checkbox</label><br />
+				<label class="checkbox-inline">
+					<input type="checkbox" name="chk1" /> check 1
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" name="chk2" /> check 2
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" name="chk3" /> check 3
+				</label>
+			</div>
+			<div class="col-md-3">
+				<label class="control-label">text area</label><br />
+				<textarea class="form-control"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<label class="control-label">add-on</label>
+				<div class="input-group">
+					<span class="input-group-addon">Rs</span>
+					<input type="text" class="form-control" placeholder="amount">
+				</div>
+			</div>
+			<div class="col-md-2">
+				<label>Drop down list</label><br />
+				<div class="btn-group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Action <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<label>Single Collapsable div</label><br />
+				<button type="button" class="btn btn-default"
+								data-toggle="collapse" aria-expanded="false" aria-controls="collapse"
+								data-target="#collapId">
+					Open collapse
+				</button>
+				<div id="collapId" class="collapse">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</div>
+			</div>
+			<div class="col-md-3">
+				<label class="control-label">Glyphicon</label><br />
+				<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+			</div>
+		</div>
+		<hr />
+		<h4>Angular Function</h4>
+		<div class="row">
+			<div class="col-md-3">
+				<label class="control-label">ng-repeat /  For loop</label>
+				<div data-ng-repeat="col in Colors">
+					{{$index + 1}}&nbsp;{{col.name}}
+				</div>
+			</div>
+			<div class="col-md-3">
+				<label class="control-label">ng-class</label>
+				<div data-ng-repeat="col in Colors">
+					<div data-ng-class="{'red':col.name == 'Red'}">
+						{{col.name}}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<label class="control-label">ng-if</label>
+				<div data-ng-repeat="col in Colors">
+					<div data-ng-if="col.name == 'Red'">
+						{{col.name}}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<label class="control-label">ng-hide / ng-show</label>
+				<div data-ng-repeat="col in Colors">
+					<div data-ng-class="{'ng-hide' : col.name == 'Red'}">
+						{{col.name}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="Scripts/jquery-1.9.0.js"></script>
+	<script src="Scripts/angular.js"></script>
+	<script src="Scripts/bootstrap.js"></script>
+	<script>
+		var app = angular.module("DemoApp", []);
+		app.controller("DemoController", function ($scope, $http) {
+
+			function _initcontroller() {
+				$scope.Colors = [{ key: 1, name: 'Red' }, { key: 2, name: 'Green' }, { key: 3, name: 'Blue' }]
+			};
+			_initcontroller();
+		});
+	</script>
+</body>
+</html>
